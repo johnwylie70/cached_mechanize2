@@ -3,12 +3,12 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-  spec.name          = "cached_mechanize"
-  spec.version       = "0.0.2"
-  spec.authors       = ["wukerplank"]
-  spec.email         = ["wukerplank@edthofer.at"]
+  spec.name          = "cached_mechanize2"
+  spec.version       = "0.1.0"
+  spec.authors       = ["johnwylie"]
+  spec.email         = ["johnwylie70@gmail.com"]
   spec.summary       = %q{A small wrapper around Mechanize to enable caching for GET requests.}
-  spec.homepage      = "https://github.com/wukerplank/cached_mechanize"
+  spec.homepage      = "https://github.com/johnwylie70/cached_mechanize2"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

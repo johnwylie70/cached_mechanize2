@@ -2,7 +2,7 @@ require "digest/sha1"
 require "zlib"
 
 class CachedMechanize
-  module CacheBackends
+
     class FileCache
 
       class GzFile
@@ -62,5 +62,5 @@ class CachedMechanize
         Digest::SHA1.hexdigest(uri)
       end
     end
-  end
+
 end

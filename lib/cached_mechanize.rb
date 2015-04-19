@@ -22,7 +22,7 @@ class CachedMechanize < Mechanize
 
   def initialize(*args)
     super
-    @cache = (@@cache_class || CachedMechanize::CacheBackends::FileCache).new(@@cache_options)
+    @cache = (@@cache_class || CachedMechanize::FileCache).new(@@cache_options)
   end
 
   # parameters:
@@ -34,15 +34,17 @@ class CachedMechanize < Mechanize
   #  - +referer+ (default: nil)
   #  - +headers+ (default: {})
   #  - +expires_after+ in seconds (default: 86400 = 1 day)
-  def get(uri, options = {})
-    options[:expires_after] ||= 86400
+  # def get(uri, options = {})
+  def get(uri, parameters = [], referer = nil, headers = {})
+
+    #options[:expires_after] ||= 86400
 
     data = nil
 
-    if @cache.present?(uri, options[:expires_after])
+    if @cache.present?(uri, 86400)
       data = Mechanize::Page.new(URI(uri), nil, @cache.retrieve(uri), nil, self)
     else
-      data = super(uri, options[:parameters], options[:referer], options[:headers])
+      data = super(uri, parameters, referer, headers)
       @cache.store(uri, data.body)
     end
 
@@ -65,4 +67,4 @@ class CachedMechanize < Mechanize
   end
 end
 
-require "cached_mechanize/cache_backends/file_cache"
+require "./file_cache"
