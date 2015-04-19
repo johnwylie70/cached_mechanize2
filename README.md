@@ -55,7 +55,6 @@ Here is what is now removed, and can be ignored (easy to fiddle with the code if
 ## Troubleshooting
 
 Im pretty new to making a GEM and it was not working on my mac when I downloaded it for testing, so instead I put the folder as a sub-folder in my project folder and included the code like this:
-Im pretty new to making a GEM and it was not working on my mac when I downloaded it for testing, so instead I put the folder as a sub-folder in my project folder and included the code like this:
     
     require './cached_mechanize2/lib/cached_mechanize'
     
