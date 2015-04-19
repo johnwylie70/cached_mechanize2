@@ -6,7 +6,7 @@ is a small wrapper around [Mechanize](https://github.com/sparklemotion/mechanize
 
 Add this line to your application's Gemfile:
 
-    gem 'cached_mechanize'
+    gem 'cached_mechanize2'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cached_mechanize
+    $ gem install cached_mechanize2
 
 ## Usage
 
@@ -25,7 +25,7 @@ To configure the backend use this syntax:
     CachedMechanize.configure do |config|
       config.cache_class = CachedMechanize::CacheBackends::FileCache
       config.cache_options = {
-        path: "/path/to/my/cached_files"
+        :path => "/path/to/my/cached_files"
       }
     end
 
@@ -34,26 +34,21 @@ Now you can use this class like you would use Mechanize:
     agent = CachedMechanize.new
     doc = agent.get('http://www.imdb.com')
 
-By default all retrieved pages will be cached for one day (86400 seconds). To change this behaviour you can provide an `expires_after` option:
+## Quick deviation from original code
 
-    doc = agent.get('http://www.imdb.com', expires_after: 42)
+The original author 'wukerplank' added some code to control cache time-out, but I dont need this and I discovered that the overloading and change of syntax from current version mechanize's 'get'  command seemed to cause errors in running, and the link click function stopped working, so i left the expire time in as a hard coded value and returned the 'get' method signature back to normal.
 
-Note that the syntax has changed! If you want to provide parameters, additional headers or a referer, you can do it like this:
+Here is what is now removed, and can be ignored (easy to fiddle with the code if you need this)
 
-    doc = agent.get('http://www.imdb.com', {
-      referer: 'http://thatothersite.com',
-      expires_after: 42
-    })
+    By default all retrieved pages will be cached for one day (86400 seconds). To change this behaviour you can provide an `expires_after` option:
 
-## TO-DO
+        doc = agent.get('http://www.imdb.com', expires_after: 42)
 
- - add more backends
- - add tests
+    Note that the syntax has changed! If you want to provide parameters, additional headers or a referer, you can do it like this:
 
-## Contributing
+        doc = agent.get('http://www.imdb.com', {
+        referer: 'http://thatothersite.com',
+        expires_after: 42
+        })
 
-1. Fork it ( http://github.com/wukerplank/cached_mechanize/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+
