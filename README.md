@@ -52,3 +52,18 @@ Here is what is now removed, and can be ignored (easy to fiddle with the code if
         })
 
 
+## Troubleshooting
+
+Im pretty new to making a GEM and it was not working on my mac when I downloaded it for testing, so instead I put the folder as a sub-folder in my project folder and included the code like this:
+Im pretty new to making a GEM and it was not working on my mac when I downloaded it for testing, so instead I put the folder as a sub-folder in my project folder and included the code like this:
+    
+    require './cached_mechanize2/lib/cached_mechanize'
+    
+Let me know if I did something wrong in the gem or if its just the way my Mac is configured!
+
+I did this to create the gem:
+
+    gem build cached_mechanize2.gemspec 
+    
+    gem push cached_mechanize2-0.1.1.gem
+    
